@@ -105,18 +105,6 @@ class App extends Component {
 
   populateArticleUrls() {
     let routes = [];
-    routes.push(
-      <Route exact path={'/detailedPage/:pathId'}
-            key={dKey}
-            render={
-              (props) =>
-              <DetailedPage {...props}
-                host={this.state.apiHost}
-                updateWhichPage={this.updateNonHomePage}
-              />
-            }
-      />);
-    dKey++;
     /*fetch(this.state.apiHost + 'getAllDetailedArticlePaths')
       .then(res =>res.json())
       .then(
@@ -181,6 +169,18 @@ class App extends Component {
         }
       />
     );
+    routes.push(
+      <Route exact path={'/:pathId'}
+            key={dKey}
+            render={
+              (props) =>
+              <DetailedPage {...props}
+                host={this.state.apiHost}
+                updateWhichPage={this.updateNonHomePage}
+              />
+            }
+      />);
+    dKey++;
     this.setState({
       routes: routes
     });

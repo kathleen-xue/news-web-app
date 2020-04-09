@@ -12,14 +12,19 @@ class CommentBox extends Component {
 		this.removeCommentBox();
 	}
 	componentDidMount() {
+		var id = this.state.id;
+		console.log(id);
 		this.removeCommentBox = commentBox('5675072811433984-proj', {
-			className: 'commentbox',
-			defaultBoxId: this.state.id,
-			tlcParam: 'tlc'
+			createBoxUrl(boxId, pageLocation) {
+				console.log(boxId);
+				pageLocation.search = id; // removes query string!
+        		pageLocation.hash = boxId;
+        		return id;
+    		},
 		});
 	}
 	render() {
-		return(<div className="commentbox"/>);
+		return(<div className="commentbox" id={this.state.id}/>);
 	}
 }
 

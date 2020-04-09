@@ -410,7 +410,6 @@ input:checked + .toggleSlider:before {
     min-height: unset;
     height: unset;
     line-height: 1.5em;
-    margin-bottom: 1.5em;
     margin-top: 1.5em;
 
 }
@@ -546,7 +545,7 @@ input:checked + .toggleSlider:before {
 	margin-left: 10px;
 }
 
-.searchPageResults h2 {
+.searchPageResults h2, .bookmarkPageHeader h2 {
 	padding-left: 10px;
 }
 

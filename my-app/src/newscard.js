@@ -41,11 +41,12 @@ class NewsCard extends Component {
 	render() {
 		const {key, img, title, description, date, section, buttonName, url, modalShow, appPath, className, source} = this.state;
 		if(className === 'bookmarkCard') {
+			//console.log(url);
 			return(
 				<Card key={key} className={className}>
 					<Card.Title>
 						<div className='cardTitleText'>
-						<Link to={'detailedPage' + appPath}>{title}</Link>
+						<Link to={appPath}>{title}</Link>
 						</div>
 						<div className='cardTitleButtons'>
 							<a onClick={this.toggleShow}><MdShare/></a>
@@ -54,12 +55,12 @@ class NewsCard extends Component {
 						</div>
 					</Card.Title>
 
-					<Link to={'detailedPage' + appPath}><Card.Img src={img}/></Link>
+					<Link to={appPath}><Card.Img src={img}/></Link>
 					<Card.Body>
-						<Link to={'detailedPage' + appPath}>
+						<Link to={appPath}>
 						<div className='footer'>
 						<div className='newsDate'>
-								<Link to={'detailedPage' + appPath}>
+								<Link to={appPath}>
 									{date}
 								</Link>
 						</div>
@@ -78,7 +79,7 @@ class NewsCard extends Component {
 				<Card key={key} className={className}>
 					<Card.Title>
 						<div className='cardTitleText'>
-						<Link to={'../detailedPage/' + appPath}>{title}</Link>
+						<Link to={'../' + appPath}>{title}</Link>
 						</div>
 						<div className='cardTitleButtons'>
 							<a onClick={this.toggleShow}><MdShare/></a>
@@ -86,12 +87,12 @@ class NewsCard extends Component {
 						</div>
 					</Card.Title>
 
-					<Link to={'../detailedPage/' + appPath}><Card.Img src={img}/></Link>
+					<Link to={'../' + appPath}><Card.Img src={img}/></Link>
 					<Card.Body>
-						<Link to={'../detailedPage/' + appPath}>
+						<Link to={'../' + appPath}>
 						<div className='footer'>
 						<div className='newsDate'>
-								<Link to={'../detailedPage' + appPath}>
+								<Link to={'../' + appPath}>
 									{date}
 								</Link>
 						</div>
@@ -107,24 +108,24 @@ class NewsCard extends Component {
 		else {
 			return(
 				<Card key={key} className={className}>
-					<Link to={'detailedPage' + appPath}><Card.Img src={img}/></Link>
+					<Link to={appPath}><Card.Img src={img}/></Link>
 					<Card.Body>
 						<Card.Title>
-							<Link to={'detailedPage' + appPath}>{title}</Link>
+							<Link to={appPath}>{title}</Link>
 							<a onClick={this.toggleShow}><MdShare/></a>
 							<ShareModal key1={key + '-modal'} show={modalShow} onHide={this.toggleShow} url={url} modalTitle={title}/>
 						</Card.Title>
 						<Card.Body>
-							<Link to={'detailedPage' + appPath}>
+							<Link to={appPath}>
 								<div className='newsDescription'>
 									{description}
 								</div>
 							</Link>
 						</Card.Body>
-						<Link to={'detailedPage' + appPath}>
+						<Link to={appPath}>
 						<div className='footer'>
 						<div className='newsDate'>
-								<Link to={'detailedPage' + appPath}>
+								<Link to={appPath}>
 									{date}
 								</Link>
 						</div>

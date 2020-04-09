@@ -56,13 +56,14 @@ class BookmarkPage extends Component {
 			//console.log(localStorage.key(i));
 		}
 		//await this.renderBookmarkCards();
+		
 		this.setState({
 			localStorage: ls,
 			cards: cards,
-			cardIds: cardIds,
-			isLoaded: false
-		}, () => {this.setState({isLoaded: true});});
-		toast("Removing " + title);
+			cardIds: cardIds
+		}, () => {
+			toast("Removing " + title);
+		});
 		/*this.setState({
 			localStorage: ls
 		}, () => {
@@ -104,7 +105,8 @@ class BookmarkPage extends Component {
 				title = data.headline.main;
 				section = ['NYTimes', data.section_name];
 				date = data.pub_date.substring(0,10);
-				url = data.url;
+				url = data.web_url;
+				//console.log(url);
 				description = data.abstract;
 				buttonName.push('nyt-button');
 				if(nytSections.has(section[1].toLowerCase())) {
