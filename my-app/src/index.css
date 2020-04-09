@@ -376,19 +376,19 @@ input:checked + .toggleSlider:before {
 .detailedPage .img-and-details {
 	height: 100%;
 	display: block;
-	font-size: 10px;
+	font-size: 12px;
 	line-height: 1.5em;
 }
 
 .detailedPage .img-and-details blockquote {
-	font-size: 10px !important;
+	font-size: 12px !important;
 	line-height: 1.5em;
 	padding: 0px 20px !important;
 }
 
 .detailedPage .img-and-details {
 	h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6 {
-		font-size: 10px !important;
+		font-size: 12px !important;
 		line-height: 1.5em;
 	}
 }
@@ -406,7 +406,7 @@ input:checked + .toggleSlider:before {
 	display: -webkit-box;
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
-    max-height: 10.5em;
+    max-height: 9em;
     min-height: unset;
     height: unset;
     line-height: 1.5em;

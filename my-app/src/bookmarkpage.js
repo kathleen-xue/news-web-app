@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import NewsCard from './newscard.js';
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import BounceLoader from 'react-spinners/BounceLoader';
 var nytSections = new Set(['world', 'politics', 'business', 'technology', 'sports']);
 var guardianSections = new Set(['world', 'politics', 'business', 'technology', 'sport']);
 
@@ -16,7 +17,8 @@ class BookmarkPage extends Component {
 		this.state = {
 			localStorage: ls,
 			cards: [],
-			cardIds: []
+			cardIds: [],
+			isLoaded: false
 		};
 		this.renderBookmarkCards = this.renderBookmarkCards.bind(this);
 		this.updateLocalStorage = this.updateLocalStorage.bind(this);
@@ -27,7 +29,7 @@ class BookmarkPage extends Component {
 		this.props.updateWhichPage();
 	}
 
-	async updateLocalStorage(id) {
+	updateLocalStorage(id) {
 		console.log('updating local storage...');
 		var ls = [];
 		var title = '';
@@ -39,7 +41,7 @@ class BookmarkPage extends Component {
 		else {
 			title = data.data.webTitle;
 		}
-		await localStorage.removeItem(id);
+		localStorage.removeItem(id);
 		var cards = this.state.cards;
 		var cardIds = this.state.cardIds;
 		for(let i = 0; i < this.state.cardIds.length; i++) {
@@ -54,11 +56,12 @@ class BookmarkPage extends Component {
 			//console.log(localStorage.key(i));
 		}
 		//await this.renderBookmarkCards();
-		await this.setState({
+		this.setState({
 			localStorage: ls,
 			cards: cards,
-			cardIds: cardIds
-		});
+			cardIds: cardIds,
+			isLoaded: false
+		}, () => {this.setState({isLoaded: true});});
 		toast("Removing " + title);
 		/*this.setState({
 			localStorage: ls
@@ -172,8 +175,9 @@ class BookmarkPage extends Component {
 		}
 		this.setState({
 			cards: cards,
-			cardIds: cardIds
-		});
+			cardIds: cardIds,
+			isLoaded: false
+		}, () => {this.setState({isLoaded: true});});
 		return;
 	}
 
@@ -183,7 +187,15 @@ class BookmarkPage extends Component {
 	}
 
 	render() {
-		const {cards} = this.state;
+		const {cards, isLoaded} = this.state;
+		while(!isLoaded) {
+			return (
+				<div>
+					<BounceLoader color='#243058'/>
+					<div className='loading'>Loading</div>
+				</div>
+			);
+		}
 		return(
 			<div className='bookmarkPageHeader'>
 				<h2>Favorites</h2>

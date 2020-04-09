@@ -52,7 +52,6 @@ class NavbarIdx extends Component {
 		this.renderSearchPage = this.renderSearchPage.bind(this);
 		this.autosuggestArray = this.autosuggestArray.bind(this);
 		this.timeout = this.timeout.bind(this);
-		this.renderBookmarkPage = this.renderBookmarkPage.bind(this);
 		this.renderToggleNewsSources = this.renderToggleNewsSources.bind(this);
 	}
 
@@ -76,7 +75,6 @@ class NavbarIdx extends Component {
 				bookmark: <MdBookmark/>,
 				bookmarkChecked: true
 			});
-			this.renderBookmarkPage();
 		}
 		else {
 			this.setState({
@@ -149,10 +147,6 @@ class NavbarIdx extends Component {
 		//e.preventDefault();
 	}
 
-	renderBookmarkPage() {
-		this.props.renderBookmarkPage();
-	}
-
 	renderSearchPage(value) {
 		this.props.history.push('/search/' + value);
 		//this.props.renderSearchPage(value);
@@ -173,7 +167,7 @@ class NavbarIdx extends Component {
 	}
 
 	renderToggleNewsSources() {
-		var pages = new Set(['home/', 'world/', 'politics/', 'business/', 'technology/', 'sports/']);
+		var pages = new Set(['home/', 'world/', 'politics/', 'business/', 'technology/', 'sports/', 'sport/']);
 		if(pages.has(this.state.selectedPage)) {
 			return(
 				<div>
