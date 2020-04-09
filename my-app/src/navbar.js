@@ -53,12 +53,18 @@ class NavbarIdx extends Component {
 		this.autosuggestArray = this.autosuggestArray.bind(this);
 		this.timeout = this.timeout.bind(this);
 		this.renderBookmarkPage = this.renderBookmarkPage.bind(this);
+		this.renderToggleNewsSources = this.renderToggleNewsSources.bind(this);
 	}
 
 	componentDidUpdate(prevProps) {
 		if(prevProps.source !== this.props.source) {
 			this.setState({
 				source: this.props.source,
+				selectedPage: this.props.whichPage
+			});
+		}
+		if(prevProps.whichPage !== this.props.whichPage) {
+			this.setState({
 				selectedPage: this.props.whichPage
 			});
 		}
@@ -166,6 +172,29 @@ class NavbarIdx extends Component {
 		}
 	}
 
+	renderToggleNewsSources() {
+		var pages = new Set(['home/', 'world/', 'politics/', 'business/', 'technology/', 'sports/']);
+		if(pages.has(this.state.selectedPage)) {
+			return(
+				<div>
+				<div className='toggleNewsContainer'>
+				    <p className='newsSourceLabel'>NYTimes</p>
+			    </div>
+				    <label className='toggleSwitch'>
+				    	<input type='checkbox' onClick={() => this.updateNewsSource(this.state.source)} value={this.state.source} checked={this.state.checked}/>
+				    	<span className='toggleSlider'/>
+				    </label>
+			    <div className='toggleNewsContainer'>
+				    <p className='newsSourceLabel'>Guardian</p>
+			    </div>
+			    </div>
+		    );
+		}
+		else {
+			return;
+		}
+	}
+
 	render() {
 
 		const {source, searchDropdown, searchValue} = this.state;
@@ -210,16 +239,7 @@ class NavbarIdx extends Component {
 			      <Nav.Link onClick={(e) => this.updateWhichPage(e, 'sports/')} className={this.styleLink('sports/')}><Link to='/sports'>Sports</Link></Nav.Link>
 			    </Nav>
 			    <div className='navbarBookmark'><a href='/bookmarks'><button onClick={() => this.toggleBookmark()}>{this.state.bookmark}</button></a></div>
-			    <div className='toggleNewsContainer'>
-				    <p className='newsSourceLabel'>NYTimes</p>
-			    </div>
-				    <label className='toggleSwitch'>
-				    	<input type='checkbox' onClick={() => this.updateNewsSource(source)} value={this.state.source} checked={this.state.checked}/>
-				    	<span className='toggleSlider'/>
-				    </label>
-			    <div className='toggleNewsContainer'>
-				    <p className='newsSourceLabel'>Guardian</p>
-			    </div>
+			    {this.renderToggleNewsSources()}
 			  </Navbar>
 		);
 	}

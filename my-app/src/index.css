@@ -237,15 +237,23 @@ input:checked + .toggleSlider:before {
 
 .newsSourceLabel {
 	color: white !important;
-	text-align: center;
+	text-align: left;
 	margin-bottom: 1px !important;
 	font-size: 12px;
+	position: absolute;
+	right: 2px;
 }
 
 .toggleNewsContainer {
 	padding: 5px;
 	margin-left: 5px;
 	margin-right: 5px;
+	display: inline-flex;
+	padding-top:10px;
+	float: unset;
+	position: relative;
+	width:50px;
+	height:20px;
 }
 
 .homePage {

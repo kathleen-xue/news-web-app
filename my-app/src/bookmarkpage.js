@@ -20,6 +20,11 @@ class BookmarkPage extends Component {
 		};
 		this.renderBookmarkCards = this.renderBookmarkCards.bind(this);
 		this.updateLocalStorage = this.updateLocalStorage.bind(this);
+		this.updateWhichPage = this.updateWhichPage.bind(this);
+	}
+
+	updateWhichPage() {
+		this.props.updateWhichPage();
 	}
 
 	async updateLocalStorage(id) {
@@ -173,6 +178,7 @@ class BookmarkPage extends Component {
 	}
 
 	componentDidMount() {
+		this.updateWhichPage();
 		return this.renderBookmarkCards();
 	}
 

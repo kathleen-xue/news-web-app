@@ -18,6 +18,7 @@ class SearchPage extends Component {
 			isLoaded: false
 		};
 		this.renderSearchCards = this.renderSearchCards.bind(this);
+		this.updateWhichPage = this.updateWhichPage.bind(this);
 	}
 
 	renderSearchCards() {
@@ -117,6 +118,10 @@ class SearchPage extends Component {
 		return;
 	}
 
+	updateWhichPage() {
+		this.props.updateWhichPage();
+	}
+
 	componentDidUpdate(props) {
 		if(this.props.match.params.query !== props.match.params.query) {
 			console.log(this.props.match.params.query, props.match.params.query);
@@ -146,6 +151,7 @@ class SearchPage extends Component {
 	}
 
 	componentDidMount() {
+		this.updateWhichPage();
 		var endpoint = this.state.host + 'searchResults?query=' + this.state.query;
 		var data = {};
 		fetch(endpoint)

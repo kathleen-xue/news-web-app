@@ -38,9 +38,11 @@ class DetailedPage extends Component {
 		this.populatePage = this.populatePage.bind(this);
 		this.toggleArticleLength = this.toggleArticleLength.bind(this);
 		this.toggleBookmark = this.toggleBookmark.bind(this);
+		this.updateWhichPage = this.updateWhichPage.bind(this);
 	}
 
 	componentDidMount() {
+		this.updateWhichPage();
 		var endpoint = this.state.host + 'detailedArticleInfo?id=' + this.state.articlePath;
 		console.log(endpoint);
 		//var data = {};
@@ -65,6 +67,10 @@ class DetailedPage extends Component {
 				}
 			);
 		
+	}
+
+	updateWhichPage() {
+		this.props.updateWhichPage();
 	}
 
 	toggleArticleLength() {

@@ -28,6 +28,7 @@ class App extends Component {
     this.populateArticleUrls = this.populateArticleUrls.bind(this);
     this.getPageContentForComponent = this.getPageContentForComponent.bind(this);
     this.validateSwitchedPages = this.validateSwitchedPages.bind(this);
+    this.updateNonHomePage = this.updateNonHomePage.bind(this);
   }
 
   updateWhichPage(pg) {
@@ -54,6 +55,12 @@ class App extends Component {
           );
         }
       );
+  }
+
+  updateNonHomePage(pg) {
+    this.setState({
+      whichPage: pg
+    });
   }
 
   validateSwitchedPages(pg, results) {
@@ -105,6 +112,7 @@ class App extends Component {
               (props) =>
               <DetailedPage {...props}
                 host={this.state.apiHost}
+                updateWhichPage={this.updateNonHomePage}
               />
             }
       />);
@@ -153,7 +161,9 @@ class App extends Component {
         key={dKey}
         render={
               (props) => 
-                <BookmarkPage {...props}/>
+                <BookmarkPage {...props}
+                  updateWhichPage={this.updateNonHomePage}
+                />
             }
       />
     );
@@ -166,6 +176,7 @@ class App extends Component {
           (props) => 
           <SearchPage {...props} 
             host={this.state.apiHost}
+            updateWhichPage={this.updateNonHomePage}
           />
         }
       />
