@@ -4,6 +4,7 @@ frontend:
     # IMPORTANT - Please verify your build commands
     preBuild:
         commands:
+            - cd my-app
             - npm install
     build:
       commands: 
