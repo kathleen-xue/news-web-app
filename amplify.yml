@@ -1,0 +1,17 @@
+version: 0.1
+frontend:
+  phases:
+    # IMPORTANT - Please verify your build commands
+    preBuild:
+        commands:
+            - npm install
+    build:
+      commands: 
+            - yarn run build
+  artifacts:
+    # IMPORTANT - Please verify your build output directory
+    baseDirectory: /my-app
+    files:
+      - '**/*'
+  cache:
+    paths: []
