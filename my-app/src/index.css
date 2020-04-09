@@ -1,0 +1,602 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.navbar {
+	min-height: 40px;
+	max-height: 35px;
+}
+
+nav.nav-bg-gradient {
+	background-image: linear-gradient(15deg, #243058 0%, #4B66B4 100%);
+	border-radius: 0px;
+	margin-bottom: 0px;
+}
+
+.btn-outline-info {
+	color: white;
+}
+
+.mr-auto {
+	margin-left: 5px;
+}
+
+.navbar-nav {
+	margin: 0px;
+}
+
+.nav-link {
+	font-size: 12px;
+}
+
+.css-3fvcat {
+  margin: 0 !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.card {
+	display: flex;
+	flex-direction: row !important;
+	margin: 10px;
+	box-shadow: 0px 5px 5px -1px #c4c4c4;
+	max-height: 200px;
+}
+
+.card button {
+	width: auto;
+	padding: 5px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	float: right;
+	margin-left: auto;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+.card svg {
+	margin-left: 5px;
+}
+
+.card a:hover {
+	cursor: pointer;
+}
+
+.card-body {
+	text-align: left;
+	text-overflow: ellipsis;
+}
+
+.card-body .card-body {
+	padding: 0px !important;
+}
+
+.newsDescription {
+	max-height: 180px;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.newsDate {
+	padding-top: 5px;
+	font-style: italic;
+	width: 90px;
+	margin-bottom: -20px !important;
+	margin-top: auto;
+}
+
+.card-img {
+	width: 200px !important;
+	height: 150px;
+	object-fit: cover;
+	margin: 10px;
+	border: 1px solid #dbdbdb;
+	padding: 3px;
+	float: left;
+	display: flex;
+	flex-direction: column;
+}
+
+.card-title {
+	font-style: italic;
+	font-weight: 700 !important;
+	margin-top: 0px;
+}
+
+.card-title .h5 {
+	font-weight: 700 !important;
+}
+
+.card-body {
+	display: flex;
+	flex-direction: column;
+}
+
+.form-inline .mr-sm-2 {
+	width: 200px !important;
+}
+
+.world-button {
+	background-color: #7c4eff !important;
+	border-color: #7c4eff !important;
+}
+
+.politics-button {
+	background-color: #419488 !important;
+	border-color: #419488 !important;
+}
+
+.business-button {
+	background-color: #4696ec !important;
+	border-color: #4696ec !important;
+}
+
+.technology-button {
+	background-color: #cedc39 !important;
+	border-color: #cedc39 !important;
+	color: black !important;
+}
+
+.sports-button {
+	background-color: #f6c244 !important;
+	border-color: #f6c244 !important;
+	color: black !important;
+}
+
+.sport-button {
+	background-color: #f6c244 !important;
+	border-color: #f6c244 !important;
+	color: black !important;
+}
+
+.other-button {
+	background-color: #6e757c !important;
+	border-color: #6e757c !important;
+}
+
+.guardian-button {
+	background-color: #000080 !important;
+	border-color: #000080 !important;
+}
+
+.nyt-button {
+	background-color: #d1d1d1 !important;
+	border-color: #d1d1d1 !important;
+	color: black !important;
+}
+
+.toggleSwitch {
+	position: relative;
+	display: inline-block;
+	width: 40px;
+	height: 22px;
+	margin-top: 6px;
+}
+
+.toggleSwitch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.toggleSlider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	-webkit-transition: .4s;
+	transition: .4s;
+	border-radius: 34px;
+}
+
+.toggleSlider:before {
+	position: absolute;
+	content: "";
+	height: 20px;
+	width: 20px;
+	left: 1px;
+	bottom: 1px;
+	background-color: white;
+	-webkit-transition: .4s;
+	transition: .4s;
+	border-radius: 50%;
+}
+
+input:checked + .toggleSlider {
+	background-color: #4596ec;
+}
+
+input:focus + .toggleSlider {
+	box-shadow: 0 0 1px #4596ec;
+}
+
+input:checked + .toggleSlider:before {
+	-webkit-transform: translateX(18px);
+	-ms-transform: translateX(18px);
+	transform: translateX(18px);
+}
+
+.newsSourceLabel {
+	color: white !important;
+	text-align: center;
+	margin-bottom: 1px !important;
+	font-size: 12px;
+}
+
+.toggleNewsContainer {
+	padding: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.homePage {
+	margin-top: 60px;
+}
+
+.selectedNav {
+	color: white;
+}
+
+.fade {
+	opacity: 100%;
+}
+
+.card [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+	cursor: default;
+}
+
+.card .btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus {
+	box-shadow: none !important;
+}
+
+.card .btn-primary.focus, .btn-primary:focus {
+	box-shadow: none !important;
+}
+
+.react-share__ShareButton {
+	target: '_blank';
+}
+
+.modal-body p {
+	font-size: 14px;
+	font-weight: 450;
+	text-align: center;
+}
+
+.modal-body .socialIcons {
+	list-style: none;
+	display: flex;
+	margin-left: 0px;
+	padding-left: 15px;
+	padding-right: 15px;
+	justify-content: space-between;
+}
+
+.loading {
+	color: black;
+	top: 56%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	position: absolute;
+	text-align: center;
+	z-index: 38973394;
+}
+
+.homePage a {
+	color: black !important;
+	text-decoration: none !important;
+}
+
+.homePage a:hover {
+	color: black !important;
+	text-decoration: none !important;
+}
+
+.navbar-nav a {
+	color: rgba(255,255,255,0.75);
+}
+
+.navbar-nav a:hover, .navbar-nav a:focus {
+	text-decoration: none !important;
+	color: #87a5c5;
+}
+
+.detailedPage .card {
+	margin-top: 60px;
+	display: block !important;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    width: 130vmin;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.detailedPage .card-title {
+	font-size: 3vh;
+	font-weight: 500 !important;
+	font-style: italic;
+	display: block;
+	width: 100%;
+	padding: 15px;
+}
+
+.detailedPage .card-img {
+	height: 60vh;
+	width: 100% !important;
+	border: none;
+	padding: 0px;
+	margin: 0px;
+	padding-bottom: 10px;
+}
+
+.detailedPage .card-body {
+	display: block !important;
+	padding-top: 0px !important;
+	margin-left: 15px;
+	margin-right: 15px;
+	padding-left: 0px;
+	padding-right: 0px;
+	text-overflow: ellipse;
+	overflow: hidden;
+	max-height: unset;
+	height: auto;
+	position: relative;
+}
+
+.detailedPage .img-and-details {
+	height: 100%;
+	display: block;
+	font-size: 10px;
+	line-height: 1.5em;
+}
+
+.detailedPage .img-and-details blockquote {
+	font-size: 10px !important;
+	line-height: 1.5em;
+	padding: 0px 20px !important;
+}
+
+.detailedPage .img-and-details {
+	h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6 {
+		font-size: 10px !important;
+		line-height: 1.5em;
+	}
+}
+
+.detailedPage .img-and-details .card-image img {
+	width: 100%;
+	height: 70vh;
+	object-fit: cover;
+}
+
+.detailedPage .detailed-description-truncated {
+	text-overflow: ellipsis;
+  	overflow: hidden;
+  	overflow-y: hidden;
+	display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    max-height: 10.5em;
+    min-height: unset;
+    height: unset;
+    line-height: 1.5em;
+    margin-bottom: 1.5em;
+    margin-top: 1.5em;
+
+}
+
+.detailedPage .card-body .detailed-description-truncated p {
+	margin: 0px !important;
+	margin-bottom: 1.5em !important;
+	line-height: 1.5em;
+	margin-block-end: 0px;
+}
+
+.detailedPage li {
+	line-height: 1.5em;
+}
+
+.detailedPage .detailed-description-long {
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+	max-height: 100%;
+	line-height: 1.5em;
+}
+
+.detailedArticleButton {
+	border: none;
+	background-color: white;
+}
+
+.detailedArticleButton:focus {
+	outline: none;
+}
+
+.detailedPage .detailedCardHeader {
+	display: flex;
+	flex-direction: row;
+}
+
+.detailedPage .detailedCardHeader .socialIcons {
+	margin-left: auto;
+}
+
+.detailedPage .detailedCardHeader .socialIcons button:focus {
+	outline: none;
+}
+
+.card-truncated {
+	max-height: 110vh;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    line-height: 1.5em;
+}
+
+.css-2b097c-container {
+	width: 200px;
+	margin-right: 1vw;
+}
+
+.detailedPage .bookmark button {
+	border: none;
+	background-color: white;
+	color: #bd0909;
+	outline: none;
+	height: 30px;
+	margin-top: 0px;
+	right: 0;
+	padding: 0px !important;
+}
+
+.detailedPage .bookmark button:focus {
+	outline: none;
+}
+
+.detailedPage .bookmark svg {
+	width: 18px;
+	height: 18px;
+	margin-bottom: 15px;
+	right: 0;
+}
+
+.card-long {
+	max-height: max-content;
+	line-height: 1.5em;
+}
+
+.navbarBookmark button {
+	background: none;
+	border: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+.navbarBookmark button:focus {
+	outline: none;
+}
+
+.navbarBookmark svg {
+	height: 3vmin;
+	width: 3vmin;
+	color: white;
+}
+
+.navbarSearch, .navbarSearch__control {
+	min-height: 30px !important;
+	height: 30px;
+}
+
+.navbarSearch__value-container {
+	min-height: 26px;
+	height: 26px;
+}
+
+.navbarSearch__dropdown-indicator {
+	padding: 0px !important;
+	padding-left: 4px !important;
+}
+
+.navbarSearch__indicator-separator {
+	margin-top: 1px !important;
+	margin-bottom: 1px !important;
+}
+
+.navbarSearch__indicators {
+	padding: 4px !important;
+	height: 100%;
+}
+
+.bookmarkPageHeader, .searchPageResults {
+	margin-top: 45px;
+	color: gray;
+	font-weight: 400;
+	margin-left: 10px;
+}
+
+.searchPageResults h2 {
+	padding-left: 10px;
+}
+
+.bookmarkCards, .searchResultCards {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.bookmarkCard, .searchResultCard {
+	width: 222px;
+	display: block !important;
+	height: fit-content;
+	overflow: auto;
+	max-height: none;
+}
+
+.bookmarkCard .card-title, .searchResultCard .card-title {
+	margin: 10px;
+}
+
+.bookmarkCard .cardTitleText, .searchResultCard .cardTitleText {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    float: left;
+    margin-right: 20px;
+}
+
+.bookmarkCard a, .searchResultCard a {
+	color: black;
+	text-decoration: none;
+}
+
+.bookmarkCard a:hover, .searchResultCard a:hover {
+	cursor: pointer;
+	text-decoration: none;
+	color: black;
+}
+
+.bookmarkCard .cardTitleButtons, .searchResultCard .cardTitleButtons {
+	float: right;
+	display: inline-flex;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: black;
+}
+
+.bookmarkCard .cardButtons button, .searchResultCard .cardButtons button {
+	margin-left: 5px;
+}
+
+.Toastify__close-button {
+	color: black !important;
+}
+
+.Toastify__toast-body {
+	color: black !important;
+}
