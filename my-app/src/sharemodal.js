@@ -26,7 +26,7 @@ class ShareModal extends Component {
 	render() {
 		const {title, url, show, key} = this.state;
 		return(
-			<Modal key={key} show={show} onHide={this.props.onHide}>
+			<Modal key={key} show={show} onHide={this.props.onHide} style={{opacity:1}}>
 				  <Modal.Header closeButton>
 				    <Modal.Title>{title}</Modal.Title>
 				  </Modal.Header>
