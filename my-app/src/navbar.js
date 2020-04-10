@@ -41,7 +41,8 @@ class NavbarIdx extends Component {
 			bookmarkChecked: this.props.whichPage === 'bookmark',
 			searchValue: null,
 			searchDropdown: [],
-			currentSearchValue: []
+			currentSearchValue: [],
+			navbarExpanded: false
 		};
 		this.updateNewsSource = this.updateNewsSource.bind(this);
 		this.updateWhichPage = this.updateWhichPage.bind(this);
@@ -54,6 +55,7 @@ class NavbarIdx extends Component {
 		this.autosuggestArray = this.autosuggestArray.bind(this);
 		this.timeout = this.timeout.bind(this);
 		this.renderToggleNewsSources = this.renderToggleNewsSources.bind(this);
+		this.toggleNavbarExpanded = this.toggleNavbarExpanded.bind(this);
 	}
 
 	componentDidUpdate(prevProps) {
@@ -79,13 +81,15 @@ class NavbarIdx extends Component {
 			this.setState({
 				bookmark: <MdBookmark/>,
 				bookmarkChecked: true,
-				selectedPage: 'bookmark'
+				selectedPage: 'bookmark',
+				navbarExpanded: false
 			});
 		}
 		else {
 			this.setState({
 				bookmark: <MdBookmarkBorder/>,
-				bookmarkChecked: false
+				bookmarkChecked: false,
+				navbarExpanded: false
 			});
 		}
 	}
@@ -100,6 +104,12 @@ class NavbarIdx extends Component {
 			arr.push({value: json.suggestionGroups[0].searchSuggestions[i].query, label: json.suggestionGroups[0].searchSuggestions[i].displayText});
 		}
 		return arr;
+	}
+
+	toggleNavbarExpanded() {
+		this.setState({
+			navbarExpanded: !this.state.navbarExpanded
+		});
 	}
 
 	timeout(ms) {
@@ -140,7 +150,8 @@ class NavbarIdx extends Component {
 
 	updateNewsSource(source) {
 		this.setState({
-			checked: source !== 'guardian'
+			checked: source !== 'guardian',
+			navbarExpanded: false
 		});
 		this.props.updateNewsSource(source);
 	}
@@ -174,6 +185,9 @@ class NavbarIdx extends Component {
 	updateWhichPage(e, pg) {
 		console.log(pg);
 		this.props.updateWhichPage(pg);
+		this.setState({
+			navbarExpanded: false
+		});
 		if(pg !== 'search') {
 			console.log('setting search 2 null!');
 			this.setState({
@@ -269,7 +283,7 @@ class NavbarIdx extends Component {
 		}
 		else {*/
 			return(
-				<Navbar collapseOnSelect expand="md" className='nav-bg-gradient' bg="dark" variant="dark" fixed="top">
+				<Navbar collapseOnSelect expand="md" className='nav-bg-gradient' bg="dark" variant="dark" fixed="top" expanded={this.state.navbarExpanded}>
 					<AsyncSelect
 			        	cacheOptions
 			        	defaultOptions={currentSearchValue}
@@ -282,7 +296,7 @@ class NavbarIdx extends Component {
 			        	onKeyDown={this.handleSubmitSearch}
 			        	value={this.state.searchValue}
 			      	/>
-			      	<Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+			      	<Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={this.toggleNavbarExpanded}/>
 			      	<Navbar.Collapse id="responsive-navbar-nav">
 			      	<Nav className="mr-auto">
 			      		  <Nav.Link onClick={(e) => this.updateWhichPage(e, 'home/')} className={this.styleLink('home/')}><Link to='/home'>Home</Link></Nav.Link>
