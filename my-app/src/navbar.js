@@ -70,6 +70,10 @@ class NavbarIdx extends Component {
 		}
 	}
 
+	componentDidMount() {
+		console.log('MOUNT',this.state.searchValue);
+	}
+
 	toggleBookmark() {
 		if(this.state.bookmarkChecked === false) {
 			this.setState({
@@ -105,7 +109,8 @@ class NavbarIdx extends Component {
 	async autosuggest(e) {
 		console.log('autosuggest', e);
 		await this.setState({
-			currentSearchValue: [{value: e, label: e}]
+			currentSearchValue: [{value: e, label: e}],
+			searchValue: {value: e, label: e}
 		});
 		var arr = this.autosuggestArray([], e);
 		await this.timeout(1000);
@@ -144,19 +149,19 @@ class NavbarIdx extends Component {
 		if(e.keyCode == 13) {
 			console.log(e.target.value);
 			console.log('form submitted!!!', e);
+			this.renderSearchPage(e.target.value);
 			this.setState({
-				searchValue: e.target.value
-			}, () => {this.renderSearchPage(this.state.searchValue);});
+				searchValue: {value: e.target.value, label: e.target.value}
+			});
 		}
 	}
 
 	handleSubmitSearchClick(value) {
 		var e = window.event;
 		console.log('form submitted!!!!', value.value);
+		this.renderSearchPage(value.value);
 		this.setState({
-			searchValue: value.value
-		}, () => {
-			this.renderSearchPage(value.value);
+			searchValue: {value: value.value, label: value.value}
 		});
 		//e.preventDefault();
 	}
@@ -169,9 +174,12 @@ class NavbarIdx extends Component {
 	updateWhichPage(e, pg) {
 		console.log(pg);
 		this.props.updateWhichPage(pg);
-		this.setState({
-			searchValue: null
-		});
+		if(pg !== 'search') {
+			console.log('setting search 2 null!');
+			this.setState({
+				searchValue: null
+			});
+		}
 	}
 
 	styleLink(className) {
@@ -207,8 +215,9 @@ class NavbarIdx extends Component {
 	}
 
 	render() {
-		console.log(this.state.selectedPage);
-		const {source, searchDropdown, searchValue, currentSearchValue, selectedPage} = this.state;
+		var searchValue = this.state.searchValue;
+		console.log(searchValue);
+		const {source, searchDropdown, currentSearchValue, selectedPage} = this.state;
 		//var updateNewsSource = this.props.updateNewsSource(source);
 		var bookmark = <MdBookmarkBorder/>;
 		if(this.props.whichPage === 'bookmark') {
@@ -232,7 +241,6 @@ class NavbarIdx extends Component {
 		*/
 		return(
 			  <Navbar className='nav-bg-gradient' bg="dark" variant="dark" fixed="top">
-			    <Form inline onSubmit={this.handleSubmitSearch}>
 			    	<AsyncSelect
 			        	cacheOptions
 			        	defaultOptions={currentSearchValue}
@@ -241,11 +249,10 @@ class NavbarIdx extends Component {
 			        	classNamePrefix='navbarSearch'
 			        	className='navbarSearch'
 			        	isSearchable={true}
-			        	onChange={(e) => this.handleSubmitSearchClick(e)}
-			        	onKeyDown={(e) => this.handleSubmitSearch(e)}
-			        	value={searchValue}
+			        	onChange={this.handleSubmitSearchClick}
+			        	onKeyDown={this.handleSubmitSearch}
+			        	value={this.state.searchValue}
 			      	/>
-			    </Form>
 			    <Nav className="mr-auto">
 			      <Nav.Link onClick={(e) => this.updateWhichPage(e, 'home/')} className={this.styleLink('home/')}><Link to='/home'>Home</Link></Nav.Link>
 			      <Nav.Link onClick={(e) => this.updateWhichPage(e, 'world/')} className={this.styleLink('world/')}><Link to='/world'>World</Link></Nav.Link>

@@ -35,11 +35,10 @@ class SearchPage extends Component {
 		var buttonName = '';
 
 		var cards = [];
-
 		for(let i = 0; i < nyt.length; i++) {
 			title = nyt[i].headline.main;
 			section = nyt[i].news_desk;
-			if(section === '') {
+			if(section === '' || section === null || !section) {
 				section = 'none';
 			}
 			date = nyt[i].pub_date.substring(0,10);
@@ -124,7 +123,7 @@ class SearchPage extends Component {
 
 	componentDidUpdate(props) {
 		if(this.props.match.params.query !== props.match.params.query) {
-			console.log(this.props.match.params.query, props.match.params.query);
+			//console.log(this.props.match.params.query, props.match.params.query);
 			this.setState({
 				query: this.props.match.params.query,
 				isLoaded: false
@@ -135,7 +134,7 @@ class SearchPage extends Component {
 					.then(res => res.json())
 					.then(
 						(result) => {
-							console.log(result);
+							//console.log(result);
 							this.setState({
 								nytData: result.nytData,
 								guardianData: result.guardianData
@@ -158,7 +157,7 @@ class SearchPage extends Component {
 			.then(res => res.json())
 			.then(
 				(result) => {
-					console.log(result);
+					//console.log(result);
 					this.setState({
 						nytData: result.nytData,
 						guardianData: result.guardianData
