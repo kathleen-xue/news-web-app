@@ -195,7 +195,7 @@ class NavbarIdx extends Component {
 		var pages = new Set(['home/', 'world/', 'politics/', 'business/', 'technology/', 'sports/', 'sport/']);
 		if(pages.has(this.state.selectedPage)) {
 			return(
-				<div>
+				<div className="toggleDiv">
 				<div className='toggleNewsContainer'>
 				    <p className='newsSourceLabel'>NYTimes</p>
 			    </div>
@@ -239,8 +239,9 @@ class NavbarIdx extends Component {
 			    		onKeyDown={(e) => this.handleSubmitSearch(e)}
 		    		/>
 		*/
-		return(
-			  <Navbar className='nav-bg-gradient' bg="dark" variant="dark" fixed="top">
+		/*if(window.innerWidth >= 500) {
+			return(
+				  <Navbar className='nav-bg-gradient' bg="dark" variant="dark" fixed="top">
 			    	<AsyncSelect
 			        	cacheOptions
 			        	defaultOptions={currentSearchValue}
@@ -264,7 +265,39 @@ class NavbarIdx extends Component {
 			    <div className='navbarBookmark'><a href='/bookmarks'><button onClick={() => this.toggleBookmark()}>{bookmark}</button></a></div>
 			    {this.renderToggleNewsSources()}
 			  </Navbar>
-		);
+			);
+		}
+		else {*/
+			return(
+				<Navbar collapseOnSelect expand="md" className='nav-bg-gradient' bg="dark" variant="dark" fixed="top">
+					<AsyncSelect
+			        	cacheOptions
+			        	defaultOptions={currentSearchValue}
+			        	loadOptions={_.debounce(this.autosuggest, 1000, {leading: true})}
+			        	placeholder='Enter keyword...'
+			        	classNamePrefix='navbarSearch'
+			        	className='navbarSearch'
+			        	isSearchable={true}
+			        	onChange={this.handleSubmitSearchClick}
+			        	onKeyDown={this.handleSubmitSearch}
+			        	value={this.state.searchValue}
+			      	/>
+			      	<Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+			      	<Navbar.Collapse id="responsive-navbar-nav">
+			      	<Nav className="mr-auto">
+			      		  <Nav.Link onClick={(e) => this.updateWhichPage(e, 'home/')} className={this.styleLink('home/')}><Link to='/home'>Home</Link></Nav.Link>
+					      <Nav.Link onClick={(e) => this.updateWhichPage(e, 'world/')} className={this.styleLink('world/')}><Link to='/world'>World</Link></Nav.Link>
+					      <Nav.Link onClick={(e) => this.updateWhichPage(e, 'politics/')} className={this.styleLink('politics/')}><Link to='/politics'>Politics</Link></Nav.Link>
+					      <Nav.Link onClick={(e) => this.updateWhichPage(e, 'business/')} className={this.styleLink('business/')}><Link to='/business'>Business</Link></Nav.Link>
+					      <Nav.Link onClick={(e) => this.updateWhichPage(e, 'technology/')} className={this.styleLink('technology/')}><Link to='/technology'>Technology</Link></Nav.Link>
+					      <Nav.Link onClick={(e) => this.updateWhichPage(e, 'sports/')} className={this.styleLink('sports/')}><Link to='/sports'>Sports</Link></Nav.Link>
+			      	</Nav>
+			      	<div className='navbarBookmark'><a href='/bookmarks'><button onClick={() => this.toggleBookmark()}>{bookmark}</button></a></div>
+			    	{this.renderToggleNewsSources()}
+			      	</Navbar.Collapse>
+				</Navbar>
+			);
+		//}
 	}
 }
 
