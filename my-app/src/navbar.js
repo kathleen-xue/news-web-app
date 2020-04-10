@@ -39,8 +39,9 @@ class NavbarIdx extends Component {
 			checked: this.props.source === 'guardian',
 			bookmark: <MdBookmarkBorder/>,
 			bookmarkChecked: false,
-			searchValue: '',
-			searchDropdown: []
+			searchValue: null,
+			searchDropdown: [],
+			currentSearchValue: []
 		};
 		this.updateNewsSource = this.updateNewsSource.bind(this);
 		this.updateWhichPage = this.updateWhichPage.bind(this);
@@ -87,6 +88,9 @@ class NavbarIdx extends Component {
 	autosuggestArray(json, input) {
 		var arr = [];
 		arr.push({value: input, label: input});
+		if(json instanceof Array) {
+			return arr;
+		}
 		for(let i = 0; i < json.suggestionGroups[0].searchSuggestions.length; i++) {
 			arr.push({value: json.suggestionGroups[0].searchSuggestions[i].query, label: json.suggestionGroups[0].searchSuggestions[i].displayText});
 		}
@@ -99,6 +103,10 @@ class NavbarIdx extends Component {
 
 	async autosuggest(e) {
 		console.log('autosuggest', e);
+		await this.setState({
+			currentSearchValue: [{value: e, label: e}]
+		});
+		var arr = this.autosuggestArray([], e);
 		await this.timeout(1000);
 		const response = 
 		await fetch("https://api.cognitive.microsoft.com/bing/v7.0/suggestions?q=" + e, 
@@ -106,7 +114,7 @@ class NavbarIdx extends Component {
 			headers: {'Ocp-Apim-Subscription-Key': searchApiKey}
 		});
 		const json = await response.json();
-		const arr = await this.autosuggestArray(json, e);
+		arr = await this.autosuggestArray(json, e);
 		return arr;
 		/*.then(r => r.json())
 		.then((json) => {
@@ -134,16 +142,21 @@ class NavbarIdx extends Component {
 	handleSubmitSearch(e) {
 		if(e.keyCode == 13) {
 			console.log(e.target.value);
-			console.log('form submitted!!!', this.state.searchValue);
-			//this.props.history.push('/search');
-			this.renderSearchPage(e.target.value);
+			console.log('form submitted!!!', e);
+			this.setState({
+				searchValue: e.target.value
+			}, () => {this.renderSearchPage(this.state.searchValue);});
 		}
 	}
 
 	handleSubmitSearchClick(value) {
 		var e = window.event;
 		console.log('form submitted!!!!', value.value);
-		this.renderSearchPage(value.value);
+		this.setState({
+			searchValue: value.value
+		}, () => {
+			this.renderSearchPage(value.value);
+		});
 		//e.preventDefault();
 	}
 
@@ -155,6 +168,9 @@ class NavbarIdx extends Component {
 	updateWhichPage(e, pg) {
 		console.log(pg);
 		this.props.updateWhichPage(pg);
+		this.setState({
+			searchValue: null
+		});
 	}
 
 	styleLink(className) {
@@ -191,7 +207,7 @@ class NavbarIdx extends Component {
 
 	render() {
 
-		const {source, searchDropdown, searchValue} = this.state;
+		const {source, searchDropdown, searchValue, currentSearchValue} = this.state;
 		//var updateNewsSource = this.props.updateNewsSource(source);
 		//<FormControl type="text" placeholder="Search" className="mr-sm-2" value={this.state.searchValue} onChange={this.autosuggest} />
 		/*
@@ -214,7 +230,7 @@ class NavbarIdx extends Component {
 			    <Form inline onSubmit={this.handleSubmitSearch}>
 			    	<AsyncSelect
 			        	cacheOptions
-			        	defaultOptions
+			        	defaultOptions={currentSearchValue}
 			        	loadOptions={_.debounce(this.autosuggest, 1000, {leading: true})}
 			        	placeholder='Enter keyword...'
 			        	classNamePrefix='navbarSearch'
@@ -222,6 +238,7 @@ class NavbarIdx extends Component {
 			        	isSearchable={true}
 			        	onChange={(e) => this.handleSubmitSearchClick(e)}
 			        	onKeyDown={(e) => this.handleSubmitSearch(e)}
+			        	value={searchValue}
 			      	/>
 			    </Form>
 			    <Nav className="mr-auto">
