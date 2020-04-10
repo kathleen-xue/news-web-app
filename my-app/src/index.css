@@ -140,6 +140,10 @@ nav.nav-bg-gradient {
 		padding-bottom: 2%;
 	}
 
+	.detailedPage .card-truncated {
+		max-height: 700px;
+	}
+
 	.detailedPage .detailed-description-long img {
 		width: 100%;
 		height: 200px !important;
@@ -184,6 +188,20 @@ nav.nav-bg-gradient {
 		width: 16px !important;
 		margin-top: 5px;
 		margin-bottom: 5px;
+	}
+
+	.toggleDiv {
+		width: 50px;
+		margin-bottom: 10px;
+	}
+
+	.toggleNewsContainer {
+		margin: 0px !important;
+		padding-top: 0px !important;
+	}
+
+	.toggleSwitch {
+		margin-top: 0px !important;
 	}
 }
 
@@ -443,6 +461,11 @@ input:checked + .toggleSlider:before {
 .navbar-nav a:hover, .navbar-nav a:focus {
 	text-decoration: none !important;
 	color: #87a5c5;
+}
+
+.nav-bg-gradient-expanded {
+	background-image: linear-gradient(15deg, #243058 0%, #4B66B4 100%);
+	height: 300px; 
 }
 
 .detailedPage .card {

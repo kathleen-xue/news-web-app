@@ -201,7 +201,7 @@ class BookmarkPage extends Component {
 		return(
 			<div className='bookmarkPageHeader'>
 				<h2>Favorites</h2>
-				<ToastContainer hideProgressBar={true} autoClose={1500}/>
+				<ToastContainer hideProgressBar={true} autoClose={1500} animation='fade' position="top-center"/>
 				<div className='bookmarkCards'>{cards}</div>
 			</div>
 		);

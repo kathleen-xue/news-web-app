@@ -183,7 +183,7 @@ class DetailedPage extends Component {
 								    >
 										<button onClick={() => this.toggleBookmark(articleData, source)}>{this.state.bookmark}</button>
 									</OverlayTrigger>
-									<ToastContainer hideProgressBar={true} autoClose={1500}/>
+									<ToastContainer hideProgressBar={true} autoClose={1500} animation='fade' position='top-center'/>
 								</div>
 							</div>
 							<div className='img-and-details'>
@@ -264,7 +264,7 @@ class DetailedPage extends Component {
 								    >
 										<button onClick={() => this.toggleBookmark(articleData, source)}>{this.state.bookmark}</button>
 									</OverlayTrigger>
-									<ToastContainer hideProgressBar={true} autoClose={1500}/>
+									<ToastContainer hideProgressBar={true} autoClose={1500} position='top-center' animation='fade'/>
 								</div>
 							</div>
 							<div className='img-and-details'>

@@ -287,7 +287,7 @@ class NavbarIdx extends Component {
 					<AsyncSelect
 			        	cacheOptions
 			        	defaultOptions={currentSearchValue}
-			        	loadOptions={_.debounce(this.autosuggest, 1000, {leading: true})}
+			        	loadOptions={_.debounce(this.autosuggest, 1500, {leading: true})}
 			        	placeholder='Enter keyword...'
 			        	classNamePrefix='navbarSearch'
 			        	className='navbarSearch'
