@@ -133,6 +133,7 @@ nav.nav-bg-gradient {
 
 	.detailedPage .card-title {
 		padding-left: 0px !important;
+		width: 95% !important;
 	}
 
 	.detailedPage .card-truncated, .detailedPage .card-long {
@@ -717,6 +718,10 @@ input:checked + .toggleSlider:before {
 
 .bookmarkCard .cardButtons button, .searchResultCard .cardButtons button {
 	margin-left: 5px;
+}
+
+.detailed-description-truncated figure {
+	margin: unset;
 }
 
 .Toastify__close-button {
