@@ -37,8 +37,8 @@ class NavbarIdx extends Component {
 			source: this.props.source,
 			selectedPage: this.props.whichPage,
 			checked: this.props.source === 'guardian',
-			bookmark: <MdBookmarkBorder/>,
-			bookmarkChecked: false,
+			bookmark: this.props.whichPage === 'bookmark' ? <MdBookmark/> : <MdBookmarkBorder/>,
+			bookmarkChecked: this.props.whichPage === 'bookmark',
 			searchValue: null,
 			searchDropdown: [],
 			currentSearchValue: []
@@ -74,7 +74,8 @@ class NavbarIdx extends Component {
 		if(this.state.bookmarkChecked === false) {
 			this.setState({
 				bookmark: <MdBookmark/>,
-				bookmarkChecked: true
+				bookmarkChecked: true,
+				selectedPage: 'bookmark'
 			});
 		}
 		else {
@@ -206,9 +207,13 @@ class NavbarIdx extends Component {
 	}
 
 	render() {
-
-		const {source, searchDropdown, searchValue, currentSearchValue} = this.state;
+		console.log(this.state.selectedPage);
+		const {source, searchDropdown, searchValue, currentSearchValue, selectedPage} = this.state;
 		//var updateNewsSource = this.props.updateNewsSource(source);
+		var bookmark = <MdBookmarkBorder/>;
+		if(this.props.whichPage === 'bookmark') {
+			bookmark = <MdBookmark/>;
+		}
 		//<FormControl type="text" placeholder="Search" className="mr-sm-2" value={this.state.searchValue} onChange={this.autosuggest} />
 		/*
 		<CreatableSelect 
@@ -249,7 +254,7 @@ class NavbarIdx extends Component {
 			      <Nav.Link onClick={(e) => this.updateWhichPage(e, 'technology/')} className={this.styleLink('technology/')}><Link to='/technology'>Technology</Link></Nav.Link>
 			      <Nav.Link onClick={(e) => this.updateWhichPage(e, 'sports/')} className={this.styleLink('sports/')}><Link to='/sports'>Sports</Link></Nav.Link>
 			    </Nav>
-			    <div className='navbarBookmark'><a href='/bookmarks'><button onClick={() => this.toggleBookmark()}>{this.state.bookmark}</button></a></div>
+			    <div className='navbarBookmark'><a href='/bookmarks'><button onClick={() => this.toggleBookmark()}>{bookmark}</button></a></div>
 			    {this.renderToggleNewsSources()}
 			  </Navbar>
 		);

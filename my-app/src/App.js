@@ -60,7 +60,7 @@ class App extends Component {
   updateNonHomePage(pg) {
     this.setState({
       whichPage: pg
-    });
+    }, () => {console.log(this.state.whichPage)});
   }
 
   validateSwitchedPages(pg, results) {

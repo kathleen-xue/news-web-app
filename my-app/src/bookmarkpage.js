@@ -26,7 +26,7 @@ class BookmarkPage extends Component {
 	}
 
 	updateWhichPage() {
-		this.props.updateWhichPage();
+		this.props.updateWhichPage('bookmark');
 	}
 
 	updateLocalStorage(id) {
