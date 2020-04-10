@@ -75,6 +75,48 @@ nav.nav-bg-gradient {
 	cursor: pointer;
 }
 
+@media screen and (max-width: 1000px) {
+	.card {
+		display: block !important;
+		max-height: unset;
+		height: fit-content;
+		flex-direction: unset !important;
+		padding-bottom: 10%;
+	}
+
+	.card-body {
+		display: block !important;
+		flex-direction: unset !important;
+		flex: unset !important;
+		padding: 0px !important;
+	}
+
+	.card-img {
+		min-width: 90% !important;
+		display: block !important;
+		flex-direction: unset !important;
+		margin-left: 5% !important;
+		margin-right: 5% !important;
+		margin-top: 5% !important;
+		height: 50%;
+	}
+
+	.card-title {
+		margin-right: 5% !important;
+		margin-left: 5% !important;
+	}
+	.newsDescription {
+		margin-right: 5% !important;
+		margin-left: 5% !important;
+	}
+
+	.card-body .footer {
+		margin-left: 5%;
+		margin-right: 5%;
+		margin-top: 10px;
+	}
+}
+
 .card-body {
 	text-align: left;
 	text-overflow: ellipsis;

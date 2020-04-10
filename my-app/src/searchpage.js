@@ -119,7 +119,7 @@ class SearchPage extends Component {
 	}
 
 	updateWhichPage() {
-		this.props.updateWhichPage();
+		this.props.updateWhichPage('search');
 	}
 
 	componentDidUpdate(props) {
