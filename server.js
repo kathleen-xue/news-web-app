@@ -20,6 +20,17 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'my-app', 'build')));
 
+app.get('/latestArticlesGuardian', cors(), function(req, res) {
+	let url = "https://content.guardianapis.com/search?orderby=newest&showfields=starRating,headline,thumbnail,short-url&api-key=" + guardianKey;
+	let settings = {method: "Get"};
+	fetch(url, settings)
+	.then(r => r.json())
+	.then((json) => {
+		fillDetailedArticlePathsArray(json.results, 'guardian');
+		res.send(json);
+	});
+})
+
 app.get('/:page/:id', cors(), function (req, res) {
 	//console.log(req.params);
 	let url = '';
