@@ -130,6 +130,17 @@ app.get('/detailedArticleInfo', cors(), function(req, res) {
 	}
 });	
 
+app.get("/detailIOS", cors(), function(req, res) {
+	var settings = {method: 'Get'};
+	var id = req.query.id;
+	var apiUrl = 'https://content.guardianapis.com/' + id + '?api-key=' + guardianKey + '&show-blocks=all';
+	fetch(apiUrl, settings)
+		.then(r => r.json())
+		.then((json) => {
+			res.send(json.response.content);
+		});
+});
+
 app.get('/searchResults', cors(), function(req, res) {
 	var query = req.query.query;
 	var guardianSearch = 'https://content.guardianapis.com/search?q='+ query +'&api-key=' + guardianKey + '&show-blocks=all';
