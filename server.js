@@ -7,6 +7,7 @@ var fs = require("fs");
 const cors = require('cors');
 const fetch = require('node-fetch');
 var bodyParser = require('body-parser');
+const googleTrends = require('google-trends-api');
 
 const nytKey = 'okflgGpEbDypkihhKQ9MYRqg6xz6dELs';
 const guardianKey = 'c2c4cdab-bf2e-47b6-94a1-77a23a74bab6';
@@ -30,6 +31,7 @@ app.get('/latestArticlesGuardian', cors(), function(req, res) {
 		res.send(json);
 	});
 });
+
 
 app.get('/:page/:id', cors(), function (req, res) {
 	//console.log(req.params);
@@ -180,6 +182,17 @@ app.get('/searchResults', cors(), function(req, res) {
 		fillDetailedArticlePathsArray(guardianResponse, 'guardian');
 	   res.send({'nytData' : nytResponse, 'guardianData': guardianResponse});
 	});
+});
+
+app.get('/googleTrends', cors(), function(req, res) {
+	var startDate = new Date('2019-06-01');
+	googleTrends.interestOverTime({keyword: req.query.q, startTime: startDate})
+		.then((results) => {
+			res.send(JSON.parse(results).default.timelineData);
+		})
+		.catch(function(err) {
+			console.error("Couldn't perform trend search :(", err);
+		});
 });
 /*
 app.post('/addArticleToPathsList', cors(), function(req, res) {
