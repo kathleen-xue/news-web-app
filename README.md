@@ -1,13 +1,13 @@
-#News Web App
+# News Web App
 A simple news app implemented in React to view news headlines and articles from NYTimes and The Guardian. This is an internet application that can be viewed on any browser, on desktop and mobile screens alike. The corresponding iOS app can be seen [here](https://github.com/kathleen-xue/news-ios-app).
 
-##APIs Used:
+## APIs Used:
 * NYTimes News API
 * Guardian News API
 * Bing Autosuggest API
 * CommentBoxIO API
 
-##To Run: 
+## To Run: 
 1. Clone this repository
 1. Open the my-app directory using `cd my-app` in Terminal
 1. Run `yarn start`
