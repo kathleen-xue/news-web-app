@@ -1,5 +1,5 @@
 # News Web App
-A simple news app implemented in React to view news headlines and articles from NYTimes and The Guardian. This is an internet application that can be viewed on any browser, on desktop and mobile screens alike. The corresponding iOS app can be seen [here](https://github.com/kathleen-xue/news-ios-app).
+A simple news app implemented in React to view news headlines and articles from NYTimes and The Guardian. This is an internet application that can be viewed on any browser, on desktop and mobile screens alike. The corresponding iOS app can be found [here](https://github.com/kathleen-xue/news-ios-app).
 
 ## APIs Used:
 * NYTimes News API
@@ -20,7 +20,7 @@ A simple news app implemented in React to view news headlines and articles from 
 
 ## Mobile Preview:
 <p float="left">
-	<img src="/images/mobileHome.png" alt="mobile homepage" width="320"/>
-	<img src="/images/mobileDetailed.png" alt="mobile detailed page" width="320"/>
-	<img src="/images/mobileBookmarks.png" alt="mobile bookmarks" width="320"/>
+	<img src="/images/mobileHome.png" alt="mobile homepage" width="300"/>
+	<img src="/images/mobileDetailed.png" alt="mobile detailed page" width="300"/>
+	<img src="/images/mobileBookmarks.png" alt="mobile bookmarks" width="300"/>
 </p>
