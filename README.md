@@ -13,6 +13,8 @@ A simple news app implemented in React to view news headlines and articles from 
 1. Run `yarn start`
 1. In a browser of your choice, open up [http://localhost:3000](http://localhost:3000)
 
+Or you could try accessing my temporarily deployed version [here](http://kxue-hw8-frontend.s3-website-us-east-1.amazonaws.com/home). This deployment might not be available since it's running on free AWS student credits and will run out eventually whoops
+
 ## Desktop Preview:
 ![web home](/images/home.png)
 ![web detailed](/images/detailed.png)
