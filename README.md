@@ -20,7 +20,7 @@ A simple news app implemented in React to view news headlines and articles from 
 
 ## Mobile Preview:
 <p float="left">
-	<img src="/images/mobileHome.png" alt="mobile homepage" width="330"/>
-	<img src="/images/mobileDetailed.png" alt="mobile detailed page" width="330"/>
-	<img src="/images/mobileBookmarks.png" alt="mobile bookmarks" width="330"/>
+	<img src="/images/mobileHome.png" alt="mobile homepage" width="320"/>
+	<img src="/images/mobileDetailed.png" alt="mobile detailed page" width="320"/>
+	<img src="/images/mobileBookmarks.png" alt="mobile bookmarks" width="320"/>
 </p>
